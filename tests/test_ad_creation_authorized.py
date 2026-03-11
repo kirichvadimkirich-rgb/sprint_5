@@ -4,7 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-import time
 class TestAdCreationAuthorized:
     # Тест: Создание объявления авторизованным пользователем
     def test_ad_creation_authorized_successful(self, driver, get_credentials_email_password):
@@ -19,7 +18,7 @@ class TestAdCreationAuthorized:
         # Заполнить поля существующими данными
         WebDriverWait(driver, 3).until(EC.visibility_of_element_located(locators.EMAIL_INPUT)).send_keys(email )
         driver.find_element(*locators.PASSWORD_INPUT).send_keys(password )
-        time.sleep(15)
+        
         # Нажать кнопку"Войти")
         WebDriverWait(driver, 3).until(EC.element_to_be_clickable(locators.LOGIN_BUTTON)).click()
       
@@ -56,3 +55,4 @@ class TestAdCreationAuthorized:
         assert "Продам IPHONE 18 PRO" in card_text
         assert "Новосибирск" in card_text
         assert "70 000 ₽" in card_text
+
